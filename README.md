@@ -13,13 +13,15 @@ Based on [kylemanna/docker-openvpn](https://github.com/kylemanna/docker-openvpn)
 
 #### Generate configs
 
-Run
+All commands should be run with superuser priveleges
+
+Create new config with name or IP host:
 
 ```
 make genconfig host=vpn.example.com
 ```
 
-And then
+And then:
 
 ```
 make initpki
