@@ -4,8 +4,9 @@ Based on [kylemanna/docker-openvpn](https://github.com/kylemanna/docker-openvpn)
 
 ### Requirements
 
-* Docker
-* Docker-Compose
+* [Docker](https://docs.docker.com/engine/install/)
+* [Docker-Compose](https://docs.docker.com/compose/install/)
+* Make
 
 ### Start
 
