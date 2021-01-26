@@ -12,6 +12,10 @@ new_cert:
 	docker-compose run --rm openvpn ovpn_getclient $(username) > client_configs/$(username).ovpn
 new: new_cert
 
+new_cert_withpass:
+	docker-compose run --rm openvpn easyrsa build-client-full $(username)
+	docker-compose run --rm openvpn ovpn_getclient $(username) > client_configs/$(username).ovpn
+
 #make revoke_cert username=test
 revoke_cert:
 	docker-compose run --rm openvpn ovpn_revokeclient $(username) remove

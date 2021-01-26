@@ -30,10 +30,16 @@ make initpki
 *Please save entered password. You'll need it for certificate management.*
 
 
-#### Generate new cert
+#### Generate new cert without password
 
 ```
 make new username=example
+```
+
+#### Generate new cert with password
+
+```
+make new_cert_withpass username=example
 ```
 
 Copy client_configs/example.ovpn to your local machine and use them in OpenVPN client.
