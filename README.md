@@ -51,24 +51,47 @@ Copy client_configs/example.ovpn to your local machine and use them in OpenVPN c
 make up
 ```
 
-### Additional management commands
+## Additional management commands
 
 
-#### Stop VPN server
+### Stop VPN server
 
 ```
 make stop
 ```
 
 
-#### View the status
+### View the status
 
 ```
 make ps
 ```
 
-#### Revoke cert
+### Revoke cert
 
 ```
 make revoke username=example
 ```
+
+
+## Useful tips
+
+### Multiply users via one configuration
+
+This OpenVPN configuration don’t allow connect multiply users via one configuration file by default. If you need to change this behavior, just add this line in server config file:
+
+
+```
+# vim ~/docker-compose-openvpn/openvpn-data/conf/openvpn.conf
+duplicate-cn
+```
+
+### Routing only internal traffic in VPN
+
+With default OpenVPN configuration file all traffic pass through the OpenVPN server. You can change it by deleting `redirect-gateway def1` from **client config file** and adding this settings:
+
+```
+route-nopull
+route 10.128.0.0 255.255.255.0
+```
+You should change IP range and IP mask in `route` settings to yours.
