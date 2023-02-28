@@ -78,8 +78,6 @@ make revoke username=example
 ### Multiply users via one configuration
 
 This OpenVPN configuration don’t allow connect multiply users via one configuration file by default. If you need to change this behavior, just add this line in server config file:
-
-
 ```
 # vim ~/docker-compose-openvpn/openvpn-data/conf/openvpn.conf
 duplicate-cn
