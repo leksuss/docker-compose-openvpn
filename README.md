@@ -94,3 +94,22 @@ route-nopull
 route 10.128.0.0 255.255.255.0
 ```
 You should change IP range and IP mask in `route` settings to yours.
+
+
+### Set static IP for the certain client
+
+Create file named like client's vpn config, but without `.ovpn` in this folder:
+```
+~/docker-compose-openvpn/openvpn-data/conf/ccd
+```
+
+Insert in this file string:
+```
+# for the linux clients
+ifconfig-push 10.8.0.3 255.255.255.0
+```
+```
+# for the windows clients
+ifconfig-push 10.8.0.3 10.8.0.1
+```
+You should change IP range and IP mask in route settings to yours. Then restart VPN server.
