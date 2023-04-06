@@ -101,13 +101,34 @@ Create file named like client's vpn config, but without `.ovpn` in this folder:
 ~/docker-compose-openvpn/openvpn-data/conf/ccd
 ```
 
-Insert in this file string:
+If your client linux, insert in this file string
 ```
 # for the linux clients
-ifconfig-push 10.8.0.3 255.255.255.0
+ifconfig-push 192.168.255.3 255.255.255.0
+```
+If your client windows, the local and remote VPN endpoints must exist within the same 255.255.255.252 subnet. This is a limitation of —dev tun when used with the TAP-WIN32 driver. What does that mean? That mean each windows client has separate subnet with VPN server and consist of 4 IP addresses:
+```
+192.168.255.0 network address
+192.168.255.1 VPN server
+192.168.255.2 VPN client
+192.168.255.3 network broadcast adress
+```
+And every new VPN client on windows get's a new 4-range IP addresses:
+```
+192.168.255.4 network address
+192.168.255.5 VPN server
+192.168.255.6 VPN client
+192.168.255.7 network broadcast adress
+```
+and etc.. Each windows client require 4 IP, you need 2 and 3. So, you should set in each file for every new windows client two IP addresses: VPN server IP and VPN client IP:
+```
+# for the windows client#1 
+# ifconfig-push VPN-client-IP, VPN-server-IP 
+ifconfig-push 192.168.255.2 192.168.255.1
 ```
 ```
-# for the windows clients
-ifconfig-push 10.8.0.3 10.8.0.1
+# for the windows client#2
+# ifconfig-push VPN-client-IP, VPN-server-IP 
+ifconfig-push 192.168.255.6 192.168.255.5
 ```
-You should change IP range and IP mask in route settings to yours. Then restart VPN server.
+etc..
