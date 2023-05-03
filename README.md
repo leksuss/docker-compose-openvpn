@@ -120,7 +120,7 @@ And every new VPN client on windows get's a new 4-range IP addresses:
 192.168.255.6 VPN client
 192.168.255.7 network broadcast address
 ```
-and etc.. Each windows client require 4 IP, you need 2 and 3. So, you should set in each file for every new windows client two IP addresses: VPN server IP and VPN client IP:
+and etc.. Each windows client require 4 IP, you need 2th and 3th. So, you should set in each file for every new windows client two IP addresses: VPN server IP and VPN client IP:
 ```
 # for the windows client#1 
 # ifconfig-push VPN-client-IP, VPN-server-IP 
