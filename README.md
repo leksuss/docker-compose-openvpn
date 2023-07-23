@@ -101,7 +101,7 @@ Create file named like client's vpn config, but without `.ovpn` in this folder:
 ~/docker-compose-openvpn/openvpn-data/conf/ccd
 ```
 
-If your client linux, insert in this file string
+If your client linux, insert in this file:
 ```
 # for the linux clients
 ifconfig-push 192.168.255.3 255.255.255.0
