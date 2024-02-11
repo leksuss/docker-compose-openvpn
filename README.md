@@ -37,6 +37,8 @@ make new username=example
 
 #### Generate new cert with password
 
+This command asks you 2 passwords: first for the client cert, second is master PEM password
+
 ```
 make new_cert_withpass username=example
 ```
@@ -68,6 +70,8 @@ make ps
 
 ### Revoke cert
 
+To revoke cert you need master PEM password
+
 ```
 make revoke username=example
 ```
@@ -89,7 +93,7 @@ With default OpenVPN configuration file all traffic pass through the OpenVPN ser
 
 ```
 route-nopull
-route 10.128.0.0 255.255.255.0
+route 192.168.255.0 255.255.255.0
 ```
 You should change IP range and IP mask in `route` settings to yours.
 
