@@ -18,7 +18,7 @@ new_cert_withpass:
 
 #make revoke_cert username=test
 revoke_cert:
-	docker compose run --rm openvpn ovpn_revokeclient $(username) remove
+	docker compose run --rm -it openvpn ovpn_revokeclient $(username) remove
 	rm client_configs/$(username).ovpn
 revoke: revoke_cert
 
