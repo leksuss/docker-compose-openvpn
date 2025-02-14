@@ -79,6 +79,33 @@ make revoke username=example
 
 ## Useful tips
 
+### Update server certificate
+
+When you can't connect to VPN server and see error like `certificate has expired` it's time to renew it. Normally there is easy-rsa tool coming with OpenVPN. But not in this repo. So you need to find easy-rsa in your machine or install it:
+```
+whereis easy-rsa
+# or
+apt install easy-rsa
+```
+
+Next, it is a good idea to backup your old keys. You can make a copy of all `pki` folder:
+```
+cp -R openvpn-data/conf/pki openvpn-data/conf/pki_backup
+```
+Next, delete your old keys/certs (replace `server_name` name with yours):
+```
+rm openvpn-data/conf/pki/private/server_name.key
+rm openvpn-data/conf/pki/issued/server_name.cert
+rm openvpn-data/conf/pki/reqs/server_name.req
+```
+
+Then in the folder containing `pki` run this command with sudo (don't forget to replace `server_name`):
+```
+# you are in openvpn-data/conf
+./easyrsa build-server-full server_name nopass
+```
+Finally, restart OpenVPN. In our case is docker compose down/up. That's it, you have extra 825 days of working cert.
+
 ### Multiply users via one configuration
 
 This OpenVPN configuration don’t allow connect multiply users via one configuration file by default. If you need to change this behavior, just add this line in server config file:
